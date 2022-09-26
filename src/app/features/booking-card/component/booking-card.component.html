@@ -1,0 +1,50 @@
+<p-card class="flex m-5 rounded-xl drop-shadow-xl shadow-sm">
+    <ng-template pTemplate="header">
+        <div (click)="showCancelDialog()"
+            class="flex absolute right-0 justify-center items-center w-7 h-7 m-2 text-white hover:bg-gray-300 hover:text-gray-500 rounded-2xl cursor-pointer">
+            <span><em class="pi pi-times text-sm"></em></span>
+        </div>
+        <div class="flex flex-col items-center">
+            <img src="{{roomSource}}" class="w-full h-32" alt="Room 1">
+            <div class="flex mt-2 p-2">
+                <span class="text-xs">Booking:</span>
+                <span class="text-xs ml-2 font-bold">{{booking.bookingCode}}</span>
+            </div>
+        </div>
+        <hr class="mt-2" />
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="flex justify-left content-center items-center">
+            <div class="flex bg-sky-600 h-10 rounded-full items-center justify-center drop-shadow-xl shadow-md">
+                <span class="text-sm p-4 text-white font-bold">1</span>
+            </div>
+            <div class="flex flex-col pl-5">
+                <span class="text-xs font-medium">{{booking.begin | date}}<em
+                        class="pi pi-chevron-right text-xxs pl-1 mt-1 font-bold text-green-700"></em></span>
+                <span class="text-xs font-medium">{{booking.end | date}}<em
+                        class="pi pi-chevron-left text-xxs font-bold pl-1 mt-1 text-red-700"></em></span>
+            </div>
+        </div>
+    </ng-template>
+</p-card>
+
+<p-dialog [(visible)]="cancelDialogDisplay" [breakpoints]="{'960px': '75vw'}" [style]="{width: '20vw'}"
+    [draggable]="false" [resizable]="false" [modal]="true" [closable]="false">
+    <ng-template pTemplate="header">
+        <div class="flex flex-1 justify-center items-center">
+            <p class="text-md font-bold">Booking Cancellation</p>
+        </div>
+    </ng-template>
+    <p class="indent-4 text-justify text-sm">Are you sure you want to cancel this reservation? If you cancel this reservartion we can't activate it later due to the high search of our hotel!</p>
+
+    <ng-template pTemplate="footer">
+        <div class="flex justify-center items-center">
+            <button (click)="cancelBooking()" class="bg-sky-600 p-2 pl-4 pr-4 text-white rounded-md text-sm" type="submit">
+                Yes
+            </button>
+            <button (click)="cancelDialogDisplay=false" class="bg-red-700 p-2 pl-4 pr-4 text-white rounded-md text-sm" type="submit">
+                No
+            </button>
+        </div>
+    </ng-template>
+</p-dialog>

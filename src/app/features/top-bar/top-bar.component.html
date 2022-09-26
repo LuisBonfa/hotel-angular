@@ -1,0 +1,47 @@
+<div class="flex fixed bg-white w-full md:px-20 shadow-xl h-24 z-10">
+    <div class="container flex items-center mx-auto">
+        <div class="flex flex-row items-center mainLogo">
+            <em class="pi pi-building text-4xl">
+            </em>
+            <span class="text-3xl font-bold pl-3">
+                Last Experience
+            </span>
+        </div>
+        <div class="flex justify-end flex-1 md:hidden text-white text-3xl">
+            <em class="fas fa-bars"></em>
+        </div>
+        <div class="items-end flex-1 text-gray-900 font-bold hidden md:flex">
+            <nav class="flex-1">
+                <div *ngIf="!userConnected;then configurations else login"></div>
+                <ng-template #login class="flex justify-end">
+                    <ul class="flex justify-end">
+                        <li class="px-4">
+                            <a href="#" class="link">Inscrever-se</a>
+                        </li>
+                        <li class="px-4">
+                            <a href="#" class="link">Log in</a>
+                        </li>
+                    </ul>
+                </ng-template>
+                <ng-template #configurations class="flex justify-end">
+                    <ul class="flex justify-end">
+                        <div class="flex">
+                            <div
+                                class="flex float-left bg-gray-200 h-10 rounded-full items-center justify-center drop-shadow-xl shadow-md">
+                                <em class="pi pi-user p-3 text-md text-gray-400"></em>
+                            </div>
+                            <div class="flex flex-row items-center pl-3">
+                                <span class="text-xxs text-gray-500">
+                                    Welcome,
+                                </span>
+                                <span class="text-xs pl-1 text-gray-500">
+                                    User
+                                </span>
+                            </div>
+                        </div>
+                    </ul>
+                </ng-template>
+            </nav>
+        </div>
+    </div>
+</div>
