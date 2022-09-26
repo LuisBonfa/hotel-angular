@@ -9,6 +9,7 @@ import { DatePipe } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { IErrorResponse } from 'src/app/core/error/IErrorResponse';
 import { AppSettings } from 'src/app/common/AppSettings';
+import { IUser } from 'src/app/core/entities/user/IUser';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -25,6 +26,7 @@ const httpOptions = {
 export class BookingListComponent implements OnInit, OnDestroy {
   booking!: Observable<IBooking>;
   bookings: IBooking[] = [];
+  users: IUser[] = [];
   display: boolean = false;
   dateValue?: Date;
   minDate!: Date;
@@ -50,7 +52,7 @@ export class BookingListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    
+
   }
 
   showDialog() {
@@ -58,7 +60,17 @@ export class BookingListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.http.get<{ [key: number]: IBooking }>(`${AppSettings.API_ENDPOINT}/booking`).pipe(
+    this.http.get<{ [key: number]: IUser }>(`${AppSettings.API_ENDPOINT}user`, httpOptions)
+      .pipe(
+        map(responseData => {
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              this.users.push(responseData[key]);
+            }
+          }
+        })
+      ).subscribe();
+    this.http.get<{ [key: number]: IBooking }>(`${AppSettings.API_ENDPOINT}booking`).pipe(
       map(responseData => {
         for (const key in responseData) {
           if (responseData.hasOwnProperty(key)) {
@@ -80,11 +92,11 @@ export class BookingListComponent implements OnInit, OnDestroy {
 
     this.onChanges();
   }
-  
+
 
 
   private addBooking(booking: BookingDTO) {
-    return this.http.post<IBooking>(`${AppSettings.API_ENDPOINT}/booking`, booking, httpOptions)
+    return this.http.post<IBooking>(`${AppSettings.API_ENDPOINT}booking`, booking, httpOptions)
       .pipe(
         catchError(error => this.handleError(error)),
         map(value => {
@@ -95,12 +107,14 @@ export class BookingListComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    let userId = '96130c20-0d54-4f98-9d8a-6fa6afcffc39';
+
+    let userId = this.users[0].id;
     let body = this.myForm.value;
     let begin = this.formatDate(body.dateRange[0]);
     let end = this.formatDate(body.dateRange[1]);
     let booking: BookingDTO = { userId: userId, begin: begin, end: end };
     this.addBooking(booking).subscribe();
+
   }
 
   private formatDate(date: Date): string {
