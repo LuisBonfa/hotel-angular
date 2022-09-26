@@ -1,37 +1,67 @@
-# Angular
+# Angular Cancun Hotel
 
-This directory is a brief example of an [Angular](https://angular.io/) app that can be deployed to Vercel with zero configuration.
+Project that aims to do the basic management of a check in and check out service of a hotel. This project has the following main dependencies: Angular, Tailwindcss, ngPrime, ngPrimeIcons, PostCSS, AutoPrefixer, rxjs.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
+To run the project and test it, you first need to have the backend up and running on port 8090. You can check how to do that here: 
+https://github.com/LuisBonfa/hotel-spring
 
-## Deploy Your Own
+<h2>🛠 Getting Started</h2>
 
-Deploy your own Angular project with Vercel.
+<h3>Running your Server</h3>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/angular&template=angular)
+To download all the dependencies, go to the project main folder and use:
 
-_Live Example: https://angular-template.vercel.app_
+    npm install
 
-## Development server
+And after that to start the server just use the code below. <br>
+Normally it will start a server on port **4200**.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+    ng serve -o
+ 
+ 
+<h3>Using already deployed server</h3>
+The frontend is already deployed in a Vercel server, you can access it here: 
+https://hotel-angular.vercel.app/
 
-## Code scaffolding
+<h2>Endpoints </h2>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<h3>Login - Not Integrated</h3>
 
-## Build
+In this endpoint only the layout is done, there was no time for me to integrate it.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+    Endpoint | GET | /
 
-## Running unit tests
+![image](https://user-images.githubusercontent.com/22968049/192288124-ac272630-f218-4162-bbb8-1d8f6096957c.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+<h3>Create User - Not Integrated</h3>
 
-## Running end-to-end tests
+    In this endpoint only the layout is done, there was no time for me to integrate it.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+    Endpoint | GET | /create-user
 
-## Further help
+![image](https://user-images.githubusercontent.com/22968049/192288152-bd9eca08-79c2-4a2c-93c0-316dcf986efc.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<h3>List of Bookings and Control</h3>
+
+In this layout, the center of the website contains all the bookings identified and that are **ACTIVE**. <br>
+The button with a "+" in it is a way to add new bookings to the list.
+
+    Endpoint | GET | /booking-list
+
+![image](https://user-images.githubusercontent.com/22968049/192288177-25d7ceae-a03f-4d20-b588-2fc2386c905b.png)
+
+When you click the "+" button a right panel will appear for you to input the desired dates of the reservation, this component
+is already programmed to only allow reservations that start 1 day plus the current date, and when you select a date, it automatically closes the range to maximum of 3 days. In addition to that, the component only allows reservations with max 30 days in the future.
+
+![image](https://user-images.githubusercontent.com/22968049/192288232-cab7d364-3ead-405d-b96f-16e7ea7420ce.png)
+![image](https://user-images.githubusercontent.com/22968049/192288436-3a5129a8-212b-49a6-94ac-a760b5ebb9f4.png)
+
+To cancel a booking, the only thing that you need is to click in the button above the booking details, when you click the button a dialog will appear for corfimation.
+
+![image](https://user-images.githubusercontent.com/22968049/192292565-96e90a10-2027-485c-8a91-1ad6197a8457.png)
+![image](https://user-images.githubusercontent.com/22968049/192292762-e6466f9c-5fb2-4138-9e52-3f8780c7bd36.png)
+
+
+
+
+
