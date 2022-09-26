@@ -1,0 +1,32 @@
+<app-top-bar></app-top-bar>
+<div class="flex flex-row flex-wrap justify-center items-center align-middle w-full h-screen">
+    <div *ngFor="let booking of bookings">
+        <app-booking-card [booking]="booking"></app-booking-card>
+    </div>
+    <div (click)="showDialog()" class="flex m-5 w-44 h-64 justify-center items-center shadow-lg rounded-md
+      border-gray-200 border-1 bg-none cursor-pointer transition ease-in-out 
+      duration-300 text-gray-400 hover:bg-gray-300 hover:text-white
+    ">
+        <em class="pi pi-plus text-2xl">
+        </em>
+    </div>
+</div>
+
+<p-dialog styleClass="dialog-form" position="right" [(visible)]="display" [draggable]="false" [closeOnEscape]="true"
+    [modal]="true">
+    <div class="container grid-cols-12">
+
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <p-calendar [required]="true" formControlName="dateRange" [numberOfMonths]="1" name="dateRange" [inline]="true"
+                selectionMode="range" [readonlyInput]="true" inputId="range" [minDate]="minDate" [maxDate]="maxDate"
+                [showClear]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}">
+            </p-calendar>
+
+            <div class="flex justify-end mt-8">
+                <button class="bg-sky-600 p-2 pl-4 pr-4 text-white rounded-md text-sm" type="submit">
+                    Confirm
+                </button>
+            </div>
+        </form>
+    </div>
+</p-dialog>
