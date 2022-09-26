@@ -53,6 +53,8 @@ The button with a "+" in it is a way to add new bookings to the list.
 When you click the "+" button a right panel will appear for you to input the desired dates of the reservation, this component
 is already programmed to only allow reservations that start 1 day plus the current date, and when you select a date, it automatically closes the range to maximum of 3 days. In addition to that, the component only allows reservations with max 30 days in the future.
 
+For now, the reservations are going only to the **root** user.
+
 ![image](https://user-images.githubusercontent.com/22968049/192288232-cab7d364-3ead-405d-b96f-16e7ea7420ce.png)
 ![image](https://user-images.githubusercontent.com/22968049/192288436-3a5129a8-212b-49a6-94ac-a760b5ebb9f4.png)
 
