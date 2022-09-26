@@ -1,1 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.p-card .p-card-content {
+    padding: 0rem 0;
+}
+
+.p-card .p-card-footer {
+    padding: 0rem 0;
+}
+
+.text-xxs {
+    font-size: 0.5rem;
+}
+
+.p-datepicker table th>span {
+    width: 1.6rem;
+    height: 1.6rem;
+    font-size: 1rem;
+}
+
+.p-datepicker table th {
+    padding: 0.35rem;
+}
+
+.p-datepicker table td>span {
+    width: 1.6rem;
+    height: 1.6rem;
+    font-size: 1rem;
+}
+
+.p-datepicker table td {
+    padding: 0.35rem;
+}
+
+.p-datepicker .p-datepicker-month {
+    font-size: 1rem;
+}
+
+.p-datepicker .p-datepicker-year {
+    font-size: 1rem;
+}
+
+.p-datepicker .pi  {
+    font-size: 1rem;
+}
+
+@layer components {
+    .mainLogo {
+        background: linear-gradient(to right, rgb(2 132 199 / var(--tw-bg-opacity)) 0%, rgb(0 250 154 / var(--tw-bg-opacity)) 150%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .link {
+        @apply text-sm;
+    }
+
+    .link:hover {
+        @apply text-sky-600;
+    }
+
+    .link-mb-5 {
+        @apply link mb-5;
+    }
+
+    .border-1 {
+        border-width: 1px
+    }
+
+    .dialog-form.p-dialog {
+        width: 20%;
+        height: auto;
+    }
+
+    @media only screen and (max-width:1400px) {
+        .dialog-form.p-dialog {
+            width: 30%;
+            height: 100%;
+        }
+    }
+
+    @media only screen and (max-width:1200px) {
+        .dialog-form.p-dialog {
+            width: 70%;
+            height: 100%;
+        }
+    }
+
+    @media only screen and (max-width: 800px) {
+        .dialog-form.p-dialog {
+            width: 100%;
+        }
+    }
+
+
+
+}
